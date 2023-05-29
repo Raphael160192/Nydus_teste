@@ -18,9 +18,6 @@ namespace CadastroFuncionários.Controllers
         {
             var empresas = _context.Empresas.ToList();
             return View(empresas);
-            //return RedirectToAction("Create");
-            //return View();
-
         }
 
         public IActionResult Create()
