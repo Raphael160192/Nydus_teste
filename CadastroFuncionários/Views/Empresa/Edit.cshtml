@@ -1,0 +1,47 @@
+﻿@model Empresa
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Editar Empresa</h2>
+
+<form method="post" asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label for="Codigo">Código:</label>
+        <input type="text" id="Codigo" name="Codigo" value="@Model.Codigo" onchange="carregarDados()" />
+    </div>
+
+    <div>
+        <label for="CNPJ">CNPJ:</label>
+        <input type="text" id="CNPJ" name="CNPJ" value="@Model.CNPJ" />
+    </div>
+
+    <div>
+        <label for="RazaoSocial">Razão Social:</label>
+        <input type="text" id="RazaoSocial" name="RazaoSocial" value="@Model.RazaoSocial" />
+    </div>
+
+    <div>
+        <label for="NomeFantasia">Nome Fantasia:</label>
+        <input type="text" id="NomeFantasia" name="NomeFantasia" value="@Model.NomeFantasia" />
+    </div>
+
+    <input type="submit" value="Salvar" />
+    <input type="button" value="Excluir" onclick="deletarEmpresa()" />
+    <input type="reset" value="Limpar" />
+</form>
+
+<script>
+    function carregarDados() {
+        // Lógica para carregar os dados da empresa com base no código informado
+    }
+
+    function deletarEmpresa() {
+        if (confirm('Tem certeza que deseja excluir esta empresa?')) {
+            // Lógica para enviar a requisição de exclusão da empresa
+        }
+    }
+</script>

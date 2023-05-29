@@ -12,6 +12,9 @@ namespace CadastroFuncionários.Models
         public DateTime DataAdmissao { get; set; }
         public DateTime? DataDemissao { get; set; }
 
+        public int CargoId { get; set; }
+        public Cargo Cargo { get; set; }
+
         public int EmpresaId { get; set; }
         public Empresa Empresa { get; set; }
 

@@ -1,0 +1,68 @@
+﻿@model List<CadastroFuncionários.Models.Colaborador>
+
+    @{
+        ViewData["Title"] = "Colaborador";
+    }
+
+    <h2>Cadastro de Colaborador</h2>
+
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Novo Colaborador</a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Matrícula</th>
+                <th>Data de Admissão</th>
+                <th>Data de Demissão</th>
+                <th>Cargo</th>
+                <th>Empresa</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var colaborador in Model)
+            {
+                <tr>
+                    <td>@colaborador.Nome</td>
+                    <td>@colaborador.CPF</td>
+                    <td>@colaborador.Matricula</td>
+                    <td>@colaborador.DataAdmissao</td>
+                    <td>@colaborador.DataDemissao</td>
+                    <td>@colaborador.Cargo.Nome</td>
+                    <td>@colaborador.Empresa.RazaoSocial</td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@colaborador.Id">Editar</a>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger" onclick="deleteColaborador(@colaborador.Id)">Excluir</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+    function deleteColaborador(id) {
+        if (confirm('Tem certeza que deseja excluir este colaborador?')) {
+            $.ajax({
+                url: '/Colaborador/Delete',
+                type: 'DELETE',
+                data: { id: id },
+                success: function () {
+                    location.reload(); // Atualiza a página após a exclusão
+                },
+                error: function () {
+                    alert('Ocorreu um erro ao excluir o colaborador.');
+                }
+            });
+        }
+    }
+    </script>

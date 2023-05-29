@@ -51,7 +51,14 @@ C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\scopedcss\bundle
 C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\CadastroFuncionários.TagHelpers.input.cache
 C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\CadastroFuncionários.TagHelpers.output.cache
 C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\CadastroFuncionários.RazorCoreGenerate.cache
+C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\Razor\Views\Cargo\Create.cshtml.g.cs
+C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\Razor\Views\Cargo\Edit.cshtml.g.cs
+C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\Razor\Views\Cargo\Index.cshtml.g.cs
+C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\Razor\Views\Colaborador\Create.cshtml.g.cs
+C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\Razor\Views\Colaborador\Edit.cshtml.g.cs
+C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\Razor\Views\Colaborador\Index.cshtml.g.cs
 C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\Razor\Views\Empresa\Create.cshtml.g.cs
+C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\Razor\Views\Empresa\Edit.cshtml.g.cs
 C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\Razor\Views\Empresa\Index.cshtml.g.cs
 C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
@@ -68,3 +75,4 @@ C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\CadastroFuncion�
 C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\ref\CadastroFuncionários.dll
 C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\CadastroFuncionários.pdb
 C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\CadastroFuncionários.genruntimeconfig.cache
+C:\CadastroFuncionários\CadastroFuncionários\obj\Debug\net5.0\Razor\Views\HistoricoCargo\Index.cshtml.g.cs

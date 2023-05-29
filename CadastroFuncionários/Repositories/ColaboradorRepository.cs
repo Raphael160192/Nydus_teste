@@ -1,9 +1,9 @@
 ﻿using CadastroFuncionários.Data;
 using CadastroFuncionários.Interfaces;
 using CadastroFuncionários.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-
 
 namespace CadastroFuncionários.Repositories
 {
@@ -18,12 +18,17 @@ namespace CadastroFuncionários.Repositories
 
         public IEnumerable<Colaborador> GetColaboradores()
         {
-            return _context.Colaboradores.ToList();
+            return _context.Colaboradores
+        .Include(c => c.Cargo)
+        .Include(c => c.Empresa)
+        .Include(c => c.HistoricoCargos)
+            .ThenInclude(hc => hc.Cargo)
+        .ToList();
         }
 
         public Colaborador GetColaboradorById(int id)
         {
-            return _context.Colaboradores.FirstOrDefault(c => c.Id == id);
+            return _context.Colaboradores.Include(c => c.Cargo).Include(c => c.Empresa).FirstOrDefault(c => c.Id == id);
         }
 
         public void AddColaborador(Colaborador colaborador)

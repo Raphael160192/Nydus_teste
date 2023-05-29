@@ -1,0 +1,38 @@
+﻿@model Cargo
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Editar Cargo</h2>
+
+<form method="post" asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label for="Nome">Nome:</label>
+        <input type="text" id="Nome" name="Nome" value="@Model.Nome" />
+    </div>
+
+    <div>
+        <label for="CBO">CBO:</label>
+        <input type="text" id="CBO" name="CBO" value="@Model.CBO" />
+    </div>
+
+    <div>
+        <label for="DescricaoAtividades">Descrição das Atividades:</label>
+        <textarea id="DescricaoAtividades" name="DescricaoAtividades">@Model.DescricaoAtividades</textarea>
+    </div>
+
+    <input type="submit" value="Salvar" />
+    <input type="button" value="Excluir" onclick="deletarCargo()" />
+    <input type="reset" value="Limpar" />
+</form>
+
+<script>
+    function deletarCargo() {
+        if (confirm('Tem certeza que deseja excluir este cargo?')) {
+        // Lógica para enviar a requisição de exclusão do cargo
+        }
+    }
+</script>

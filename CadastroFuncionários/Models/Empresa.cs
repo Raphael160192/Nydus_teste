@@ -7,6 +7,8 @@ namespace CadastroFuncionários.Models
         [Key]
         public int Id { get; set; }
 
+        public string Codigo { get; set; }
+
         [Required(ErrorMessage = "O CNPJ é obrigatório.")]
         public string CNPJ { get; set; }
 

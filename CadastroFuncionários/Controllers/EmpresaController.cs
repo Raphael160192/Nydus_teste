@@ -16,16 +16,16 @@ namespace CadastroFuncionários.Controllers
 
         public IActionResult Index()
         {
-            //var empresas = _context.Empresas.ToList();
-            //return View(empresas);
+            var empresas = _context.Empresas.ToList();
+            return View(empresas);
             //return RedirectToAction("Create");
-            return View();
+            //return View();
 
         }
 
         public IActionResult Create()
         {
-            return View(new Empresa());
+            return View();
         }
 
         [HttpPost]
@@ -68,20 +68,8 @@ namespace CadastroFuncionários.Controllers
             }
             return View(empresa);
         }
-         
-        public IActionResult Delete(int id)
-        {
-            var empresa = _context.Empresas.Find(id);
-            if (empresa == null)
-            {
-                return NotFound();
-            }
-            return View(empresa);
-        }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public IActionResult Delete(int id)
         {
             var empresa = _context.Empresas.Find(id);
             if (empresa == null)
@@ -93,5 +81,6 @@ namespace CadastroFuncionários.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
     }
 }

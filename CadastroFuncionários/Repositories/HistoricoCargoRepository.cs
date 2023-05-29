@@ -1,6 +1,7 @@
 ﻿using CadastroFuncionários.Data;
 using CadastroFuncionários.Interfaces;
 using CadastroFuncionários.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,9 @@ namespace CadastroFuncionários.Repositories
 
         public IEnumerable<HistoricoCargo> GetHistoricoCargos()
         {
-            return _context.HistoricoCargos.ToList();
+            return _context.HistoricoCargos.Include(h => h.Colaborador)
+            .ThenInclude(c => c.Empresa).Include(h => h.Cargo).ToList();
+
         }
 
         public HistoricoCargo GetHistoricoCargoById(int id)

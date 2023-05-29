@@ -1,0 +1,100 @@
+﻿@model CadastroFuncionários.Models.Colaborador
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Editar Colaborador</h2>
+
+<form method="post" asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label for="Nome">Nome:</label>
+        <input type="text" id="Nome" name="Nome" value="@Model.Nome" />
+    </div>
+
+    <div>
+        <label for="CPF">CPF:</label>
+        <input type="text" id="CPF" name="CPF" value="@Model.CPF" />
+    </div>
+
+    <div>
+        <label for="Matricula">Matrícula:</label>
+        <input type="text" id="Matricula" name="Matricula" pattern="[A-Z]{2}[0-9]{4}" title="O campo matrícula deve respeitar o formato CCNNNN, onde C são caracteres (sempre em caixa alta) e N são números. Ex.: AA1234, AB9876" value="@Model.Matricula" readonly="@Model.DataDemissao != null" />
+    </div>
+
+    <div>
+        <label for="DataAdmissao">Data de Admissão:</label>
+        <input type="date" id="DataAdmissao" name="DataAdmissao" value="@Model.DataAdmissao.ToString("yyyy-MM-dd")" readonly="@Model.DataDemissao != null" />
+    </div>
+
+    <div>
+        <label for="DataDemissao">Data de Demissão:</label>
+        <input type="date" id="DataDemissao" name="DataDemissao" value="@Model.DataDemissao?.ToString(" yyyy-MM-dd")" readonly="@Model.DataDemissao != null" />
+    </div>
+
+    <div>
+        <label for="CargoId">Cargo:</label>
+        <select id="CargoId" name="CargoId" disabled="@Model.DataDemissao != null">
+            @{ var cargos = ViewBag.Cargos; }
+            @foreach (var cargo in cargos)
+            {
+                <option value="@cargo.Id" selected="@cargo.Id == Model.CargoId">@cargo.Nome</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label for="EmpresaId">Empresa:</label>
+        <select id="EmpresaId" name="EmpresaId" disabled="@Model.DataDemissao != null">
+            @{ var empresas = ViewBag.Empresas; }
+            @foreach (var empresa in empresas)
+            {
+                <option value="@empresa.Id" selected="@empresa.Id == Model.EmpresaId">@empresa.RazaoSocial</option>
+            }
+        </select>
+    </div>
+
+    @if (Model.DataDemissao != null)
+    {
+        <a href="@Url.Action("Index")" class="btn btn-primary">Voltar</a>
+    }
+    else
+    {
+        <input type="submit" value="Salvar" />
+        <input type="reset" value="Limpar" />
+    }
+</form>
+
+@section Scripts {
+    <script>
+        // Lógica para carregar os cargos e empresas disponíveis nos comboboxes
+        var cargos = @Html.Raw(Json.Serialize(ViewBag.Cargos));
+        var empresas = @Html.Raw(Json.Serialize(ViewBag.Empresas));
+
+        // Preenche o combobox de cargos
+        var cargoSelect = document.getElementById("CargoId");
+        for (var i = 0; i < cargos.length; i++) {
+            var option = document.createElement("option");
+            option.value = cargos[i].Id;
+            option.text = cargos[i].Nome;
+            option.selected = cargos[i].Id == "@Model.CargoId" ? true : false;
+            cargoSelect.appendChild(option);
+        }
+
+        // Preenche o combobox de empresas
+        var empresaSelect = document.getElementById("EmpresaId");
+        for (var i = 0; i < empresas.length; i++) {
+            var option = document.createElement("option");
+            option.value = empresas[i].Id;
+            option.text = empresas[i].RazaoSocial;
+            option.selected = empresas[i].Id == "@Model.EmpresaId" ? true : false;
+            empresaSelect.appendChild(option);
+        }
+
+        // Preenche a data de demissão
+        var dataDemissaoInput = document.getElementById("DataDemissao");
+        dataDemissaoInput.value = "@Model.DataDemissao?.ToString("yyyy-MM-dd")";
+    </script>
+}

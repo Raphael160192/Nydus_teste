@@ -17,9 +17,15 @@ namespace CadastroFuncionários.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Aqui você pode adicionar configurações adicionais, como chaves primárias compostas ou restrições.
-            // Por exemplo, se desejar definir uma chave primária composta na tabela HistoricoCargo:
-            // modelBuilder.Entity<HistoricoCargo>().HasKey(hc => new { hc.Id, hc.ColaboradorId });
+            modelBuilder.Entity<HistoricoCargo>()
+            .HasOne(hc => hc.Cargo)
+            .WithMany()
+            .HasForeignKey(hc => hc.CargoId);
+
+            modelBuilder.Entity<HistoricoCargo>()
+            .HasOne(hc => hc.Colaborador)
+            .WithMany(c => c.HistoricoCargos)
+            .HasForeignKey(hc => hc.ColaboradorId);
         }
     }
 }

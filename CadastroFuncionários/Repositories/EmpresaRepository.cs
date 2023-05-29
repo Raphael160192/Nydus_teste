@@ -16,7 +16,7 @@ namespace CadastroFuncionários.Repositories
         {
             _context = context;
         }
-        public IEnumerable<Empresa> GetCargos()
+        public IEnumerable<Empresa> GetEmpresas()
         {
             return _context.Empresas.ToList();
         }

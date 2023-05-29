@@ -1,0 +1,37 @@
+﻿@model IEnumerable<CadastroFuncionários.Models.HistoricoCargo>
+
+    @{
+        ViewData["Title"] = "Histórico de Colaboradores";
+    }
+
+    <h1>@ViewData["Title"]</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome do Colaborador</th>
+                <th>Matrícula</th>
+                <th>Data de Admissão</th>
+                <th>Data de Demissão</th>
+                <th>Cargo</th>
+                <th>Empresa</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var historicoCargo in Model)
+            {
+                <tr>
+                    <td>@historicoCargo.Colaborador.Nome</td>
+                    <td>@historicoCargo.Colaborador.Matricula</td>
+                    <td>@historicoCargo.Colaborador.DataAdmissao.ToString("dd/MM/yyyy")</td>
+                    <td>@(historicoCargo.Colaborador.DataDemissao.HasValue ? historicoCargo.Colaborador.DataDemissao.Value.ToString("dd/MM/yyyy") : "-")</td>
+                    <td>@historicoCargo.Cargo.Nome</td>
+                    <td>@historicoCargo.Colaborador.Empresa.RazaoSocial</td>
+                    <td>
+                        <a class="btn btn-primary" href="@Url.Action("Historico", "Colaborador", new { id = historicoCargo.ColaboradorId })">Histórico</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

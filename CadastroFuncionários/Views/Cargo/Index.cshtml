@@ -1,0 +1,60 @@
+﻿@model List<Cargo>
+
+    @{
+        ViewData["Title"] = "Index";
+    }
+
+    <h2>Cadastro de Cargo</h2>
+
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Novo Cargo</a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CBO</th>
+                <th>Descrição das Atividades</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cargo in Model)
+            {
+                <tr>
+                    <td>@cargo.Nome</td>
+                    <td>@cargo.CBO</td>
+                    <td>@cargo.DescricaoAtividades</td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@cargo.Id">Editar</a>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger" onclick="deleteCargo(@cargo.Id)">Excluir</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+    function deleteCargo(id) {
+        if (confirm('Tem certeza que deseja excluir este cargo?')) {
+            $.ajax({
+                url: '/Cargo/Delete',
+                type: 'DELETE',
+                data: { id: id },
+                success: function () {
+                    location.reload(); // Atualiza a página após a exclusão
+                },
+                error: function () {
+                    alert('Ocorreu um erro ao excluir o cargo.');
+                }
+            });
+        }
+    }
+    </script>

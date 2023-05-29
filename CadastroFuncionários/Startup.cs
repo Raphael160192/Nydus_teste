@@ -75,8 +75,53 @@ namespace CadastroFuncionários
 
                 endpoints.MapControllerRoute(
                     name: "empresaDelete",
-                    pattern: "empresa/delete/{id}",
-                    defaults: new { controller = "Empresa", action = "Delete" });
+                    pattern: "empresa",
+                    defaults: new { controller = "Empresa", action = "DeleteConfirmed" });
+
+                endpoints.MapControllerRoute(
+                    name: "cargoCreate",
+                    pattern: "cargo/create",
+                    defaults: new { controller = "Cargo", action = "Create" });
+
+                endpoints.MapControllerRoute(
+                    name: "cargoIndex",
+                    pattern: "cargo",
+                    defaults: new { controller = "Cargo", action = "Index" });
+
+                endpoints.MapControllerRoute(
+                    name: "cargoEdit",
+                    pattern: "cargo/edit/{id}",
+                    defaults: new { controller = "Cargo", action = "Edit" });
+
+                endpoints.MapControllerRoute(
+                    name: "cargoDelete",
+                    pattern: "cargo/delete/{id}",
+                    defaults: new { controller = "Cargo", action = "Delete" });
+
+                endpoints.MapControllerRoute(
+                    name: "ColaboradorCreate",
+                    pattern: "Colaborador/create",
+                    defaults: new { controller = "Colaborador", action = "Create" });
+
+                endpoints.MapControllerRoute(
+                    name: "ColaboradorIndex",
+                    pattern: "Colaborador",
+                    defaults: new { controller = "Colaborador", action = "Index" });
+
+                endpoints.MapControllerRoute(
+                    name: "ColaboradorEdit",
+                    pattern: "Colaborador/edit/{id}",
+                    defaults: new { controller = "Colaborador", action = "Edit" });
+
+                endpoints.MapControllerRoute(
+                    name: "ColaboradorDelete",
+                    pattern: "Colaborador/delete/{id}",
+                    defaults: new { controller = "Colaborador", action = "Delete" });
+
+                endpoints.MapControllerRoute(
+                    name: "HistoricoCargoIndex",
+                    pattern: "HistoricoCargo",
+                    defaults: new { controller = "HistoricoCargo", action = "Index" });
 
 
             });

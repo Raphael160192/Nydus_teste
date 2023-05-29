@@ -1,4 +1,4 @@
-﻿@model Empresa
+﻿    @model List<Empresa>
 
     @{
         ViewData["Title"] = "Empresa";
@@ -6,38 +6,53 @@
 
     <h2>Cadastro de Empresa</h2>
 
-    <form method="post" action="@Url.Action("Create", "Empresa")">
-        <div>
-            <label for="Codigo">Código:</label>
-            <input type="text" id="Codigo" name="Codigo" onchange="carregarDados()" />
-        </div>
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Nova Empresa</a>
+    </p>
 
-        <div>
-            <label for="CNPJ">CNPJ:</label>
-            <input type="text" id="CNPJ" name="CNPJ" />
-        </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>CNPJ</th>
+                <th>Razão Social</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var empresa in Model)
+            {
+                <tr>
+                    <td>@empresa.CNPJ</td>
+                    <td>@empresa.RazaoSocial</td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@empresa.Id">Editar</a>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger" onclick="deleteEmpresa(@empresa.Id)">Excluir</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-        <div>
-            <label for="RazaoSocial">Razão Social:</label>
-            <input type="text" id="RazaoSocial" name="RazaoSocial" />
-        </div>
-
-        <div>
-            <label for="NomeFantasia">Nome Fantasia:</label>
-            <input type="text" id="NomeFantasia" name="NomeFantasia" />
-        </div>
-
-        <input type="submit" value="Salvar" />
-        <input type="button" value="Excluir" onclick="deletarEmpresa()" />
-        <input type="reset" value="Limpar" />
-    </form>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
 
     <script>
-        function carregarDados() {
-            // Lógica para carregar os dados da empresa com base no código informado
-        }
-
-        function deletarEmpresa() {
-            // Lógica para confirmar a exclusão da empresa
+        function deleteEmpresa(id) {
+            if (confirm('Tem certeza que deseja excluir esta empresa?')) {
+                $.ajax({
+                    url: '/Empresa/Delete',
+                    type: 'DELETE',
+                    data: { id: id },
+                    success: function () {
+                        location.reload(); // Atualiza a página após a exclusão
+                    },
+                    error: function () {
+                        alert('Ocorreu um erro ao excluir a empresa.');
+                    }
+                });
+            }
         }
     </script>

@@ -8,7 +8,7 @@ namespace CadastroFuncionários.Interfaces
 {
     public interface IEmpresaRepository
     {
-        IEnumerable<Empresa> GetCargos();
+        IEnumerable<Empresa> GetEmpresas();
         void AddEmpresa(Empresa empresa);
         Empresa GetByIdEmpresa(int id);
         List<Empresa> GetListEmpresas();
